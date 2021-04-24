@@ -1,11 +1,11 @@
-import Header from "../components/shared/Header"
+
+import BaseLayout from "../components/layouts/BaseLayout"
 
 const Blogs = () => {
     return (
-        <>
-        <Header />
+        <BaseLayout>
         <div>I am the Blogs page</div>
-        </>
+        </BaseLayout>
     )
 }
 

@@ -1,12 +1,11 @@
-import Header from "../components/shared/Header"
+import BaseLayout from "../components/layouts/BaseLayout"
 
 
 const Cv = () => {
     return (
-        <>
-        <Header />
+        <BaseLayout>
         <div>I am the CV page</div>
-        </>
+        </BaseLayout>
     )
 }
 export default Cv

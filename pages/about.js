@@ -1,13 +1,12 @@
-import Header from "../components/shared/Header"
 
+import BaseLayout from "../components/layouts/BaseLayout"
 
 
 const About = () => {
     return (
-        <>
-        <Header />
+        <BaseLayout>
         <div>I am the About page</div>
-        </>
+        </BaseLayout>
     )
 }
 export default About

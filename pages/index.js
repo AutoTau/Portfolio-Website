@@ -1,12 +1,10 @@
-import Header from "../components/shared/Header"
 
+import BaseLayout from "../components/layouts/BaseLayout"
 
 export default function Home() {
-  return(
-    <>
-    <Header />
-    <div>I am the Index page</div>
-    </>
-    
+  return (
+    <BaseLayout>
+      <div>I am the Index page</div>
+    </BaseLayout>
   )
 }
