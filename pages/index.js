@@ -1,6 +1,12 @@
+import Header from "../components/shared/Header"
+
 
 export default function Home() {
   return(
-    <h1>I am the index page</h1>
+    <>
+    <Header />
+    <div>I am the Index page</div>
+    </>
+    
   )
 }

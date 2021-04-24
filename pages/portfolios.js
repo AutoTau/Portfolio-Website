@@ -1,4 +1,15 @@
+import Header from "../components/shared/Header"
 
-const Portfolios = () => <div>I am the Portfolios page</div>
+
+
+const Portfolios = () => {
+    
+    return (
+        <>
+        <Header />
+        <div>I am the Portfolios page</div>
+        </>
+    )
+}
 
 export default Portfolios
