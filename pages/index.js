@@ -2,7 +2,7 @@
 import BaseLayout from "../components/layouts/BaseLayout"
 import { Container, Button } from "reactstrap";
 
-export default function Home() {
+const Home = () => {
   return (
     <BaseLayout>
       <Container>
@@ -11,3 +11,5 @@ export default function Home() {
     </BaseLayout>
   )
 }
+
+export default Home;
