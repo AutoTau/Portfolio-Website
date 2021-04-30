@@ -18,6 +18,14 @@ const BsNavLink = props => {
   )
 }
 
+const LoginLink = () => 
+  <span className="nav-link port-navbar-link clickable">Log in</span>
+
+
+const LogoutLink = () => 
+  <span className="nav-link port-navbar-link clickable">Log out</span>
+
+
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
@@ -38,19 +46,27 @@ const Header = () => {
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
             <NavItem className="port-navbar-item">
-              <BsNavLink href="/" title="Home"/>
+              <BsNavLink href="/" title="Home" />
             </NavItem>
             <NavItem className="port-navbar-item">
-              <BsNavLink href="/about" title="About"/>
+              <BsNavLink href="/about" title="About" />
             </NavItem>
             <NavItem className="port-navbar-item">
-              <BsNavLink href="/portfolios" title="Portfolios"/>
+              <BsNavLink href="/portfolios" title="Portfolios" />
             </NavItem>
             <NavItem className="port-navbar-item">
-              <BsNavLink href="/blogs" title="Blogs"/>
+              <BsNavLink href="/blogs" title="Blogs" />
             </NavItem>
             <NavItem className="port-navbar-item">
-              <BsNavLink href="/cv" title="Cv"/>
+              <BsNavLink href="/cv" title="Cv" />
+            </NavItem>
+          </Nav>
+          <Nav navbar>
+            <NavItem className="port-navbar-item">
+              <LoginLink/>
+            </NavItem>
+            <NavItem className="port-navbar-item">
+              <LogoutLink/>
             </NavItem>
           </Nav>
         </Collapse>
