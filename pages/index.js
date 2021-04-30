@@ -1,6 +1,9 @@
 import React from 'react';
 import BaseLayout from '../components/layouts/BaseLayout';
 import { Container, Row, Col } from 'reactstrap';
+import Typed from "react-typed";
+
+const roles = ["Developer", "Tech Enthusiast", "React JS", "C++", "C#", "C", "Java", "Unity"];
 
 class Index extends React.Component {
   render() {
@@ -22,7 +25,7 @@ class Index extends React.Component {
                           Have a look at my portfolio and job history.
                         </div>
                       </div>
-                      <img className="image" src="/images/section-1.png"/>
+                      <img className="image" src="/images/section-1.png" />
                       <div className="shadow-custom">
                         <div className="shadow-inner"> </div>
                       </div>
@@ -37,6 +40,17 @@ class Index extends React.Component {
                     Discover and collaborate on projects I've been working on throughout the years!
                   </h1>
                 </div>
+                <Typed
+                  loop
+                  typeSpeed={70}
+                  backspeed={70}
+                  strings={roles}
+                  backDelay={1000}
+                  loopCount={0}
+                  showCursor
+                  className="self-typed"
+                  cursorChar="|"
+                />
                 <div className="hero-welcome-bio">
                   <h1>
                     Let's take a look at my work.

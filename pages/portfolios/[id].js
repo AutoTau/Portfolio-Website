@@ -1,25 +1,27 @@
-import BaseLayout from "../../components/layouts/BaseLayout"
-import { useRouter } from "next/router"
-import axios from "axios"
+import BaseLayout from "../../components/layouts/BaseLayout";
+import axios from "axios";
+import BasePage from "../../components/BasePage";
 
-const Portfolio = ({portfolio}) => {
+const Portfolio = ({ portfolio }) => {
 
     return (
         <BaseLayout>
-        <h1>I am the Portfolio Page</h1>
-        <h1>{portfolio.title}</h1>
-        <p>Body: {portfolio.body}</p>
-        <p>ID: {portfolio.id}</p>
+            <BasePage>
+                <h1>I am the Portfolio Page</h1>
+                <h1>{portfolio.title}</h1>
+                <p>Body: {portfolio.body}</p>
+                <p>ID: {portfolio.id}</p>
+            </BasePage>
         </BaseLayout>
     )
 }
 
-Portfolio.getInitialProps = async ({query}) => {
+Portfolio.getInitialProps = async ({ query }) => {
     let post = {};
     try {
         const res = await axios.get(`https://jsonplaceholder.typicode.com/posts/${query.id}`);
         post = res.data;
-    } catch(e) {
+    } catch (e) {
         console.error(e);
     }
 

@@ -1,6 +1,7 @@
-import BaseLayout from "../../components/layouts/BaseLayout"
-import axios from "axios"
-import Link from "next/link"
+import BaseLayout from "../../components/layouts/BaseLayout";
+import axios from "axios";
+import Link from "next/link";
+import BasePage from "../../components/BasePage";
 
 const Portfolios = ({ posts }) => {
     console.log(posts)
@@ -18,10 +19,12 @@ const Portfolios = ({ posts }) => {
 
     return (
         <BaseLayout >
-            <h1>I am the Portfolios page</h1>
-            <ul>
-                {renderPosts()}
-            </ul>
+            <BasePage>
+                <h1>I am the Portfolios page</h1>
+                <ul>
+                    {renderPosts()}
+                </ul>
+            </BasePage>
         </BaseLayout>
     )
 }
