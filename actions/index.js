@@ -1,9 +1,10 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState } from "react";
 
 const useGetPosts = () => {
 
     const [posts, setPosts] = useState([]);
     const [error, setError] = useState();
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         async function getPosts() {
@@ -16,13 +17,13 @@ const useGetPosts = () => {
                 setPosts(result);
             }
 
-            setPosts(result);
+            setLoading(false);
         }
 
         getPosts();
     }, [])
 
-    return { posts, error };
+    return { posts, error, loading };
 }
 
 export default useGetPosts;

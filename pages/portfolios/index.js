@@ -5,7 +5,7 @@ import useGetPosts from "@/actions";
 
 const Portfolios = () => {
 
-    const { posts, error } = useGetPosts();
+    const { posts, error, loading } = useGetPosts();
 
     const renderPosts = () => {
         return posts.map(post =>
@@ -22,6 +22,9 @@ const Portfolios = () => {
         <BaseLayout >
             <BasePage>
                 <h1>I am the Portfolios page</h1>
+                { loading &&
+                    <p>Loading Data...</p>
+                }
                 { posts &&
                     <ul>
                         {renderPosts()}
