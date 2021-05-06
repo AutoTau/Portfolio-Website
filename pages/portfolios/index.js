@@ -1,36 +1,36 @@
-import BaseLayout from "@/components/layouts/BaseLayout";
-import Link from "next/link";
-import BasePage from "@/components/BasePage";
-import useGetPosts from "@/actions";
+import BaseLayout from '@/components/layouts/BaseLayout';
+import BasePage from '@/components/BasePage';
+import Link from 'next/link';
+import { useGetData } from '@/actions';
 
 const Portfolios = () => {
+    const { data, error, loading } = useGetData('/api/v1/posts');
 
-    const { posts, error, loading } = useGetPosts();
-
-    const renderPosts = () => {
+    const renderPosts = (posts) => {
         return posts.map(post =>
-            <li key={post.id}>
-                <Link href={`/portfolios/${post.id}`}>
+            <li key={post.id} style={{ 'fontSize': '20px' }}>
+                <Link as={`/portfolios/${post.id}`} href="/portfolios/[id]">
                     <a>
-                        {post.id}
+                        {post.title}
                     </a>
                 </Link>
-            </li>)
+            </li>
+        )
     }
 
     return (
-        <BaseLayout >
+        <BaseLayout>
             <BasePage>
-                <h1>I am the Portfolios page</h1>
-                { loading &&
-                    <p>Loading Data...</p>
+                <h1>I am Portfolio Page</h1>
+                {loading &&
+                    <p>Loading data...</p>
                 }
-                { posts &&
+                {data &&
                     <ul>
-                        {renderPosts()}
+                        {renderPosts(data)}
                     </ul>
                 }
-                { error &&
+                {error &&
                     <div className="alert alert-danger">{error.message}</div>
                 }
             </BasePage>
