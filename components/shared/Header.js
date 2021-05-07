@@ -18,12 +18,16 @@ const BsNavLink = props => {
   )
 }
 
+const BsNavBrand = () =>
+  <Link href="/">
+    <a className="navbar-brand port-navbar-brand">Benjamin Portis</a>
+  </Link>
+
 const LoginLink = () =>
-  <a className="nav-link port-navbar-link" href="/api/v1/login">Log in</a>
+  <a className="nav-link port-navbar-link" href="/api/auth/login">Log in</a>
 
 const LogoutLink = () =>
-  <span className="nav-link port-navbar-link clickable">Log out</span>
-
+  <a className="nav-link port-navbar-link" href="/api/auth/logout">Log out</a>
 
 const Header = ({ user, loading }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -36,11 +40,7 @@ const Header = ({ user, loading }) => {
         color="transparent"
         dark
         expand="md">
-        <div className="navbar-brand">
-          <Link href="/">
-            <a className="port-navbar-brand">Benjamin Portis</a>
-          </Link>
-        </div>
+        <BsNavBrand />
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
@@ -81,5 +81,4 @@ const Header = ({ user, loading }) => {
     </div>
   );
 }
-
 export default Header;

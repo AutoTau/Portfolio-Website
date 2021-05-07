@@ -3,14 +3,14 @@ import axios from "axios";
 import BasePage from "@/components/BasePage";
 import { useGetPostById } from "@/actions";
 import { useRouter } from 'next/router';
-import { useGetUser } from '@/actions/user';
+import { useUser } from '@auth0/nextjs-auth0';
 
 const Portfolio = () => {
     const router = useRouter();
     const { data: portfolio, error, loading } = useGetPostById(router.query.id);
-    const { data: dataU, loading: loadingU } = useGetUser();
+    const { user, error: errorU, loading: loadingU } = useUser();
     return (
-        <BaseLayout user={dataU} loading={loadingU}>
+        <BaseLayout user={user} loading={loadingU}>
             <BasePage>
                 {loading && <p>Loading Data...</p>}
                 {error && <div className="alert alert-danger">{error.message}</div>}

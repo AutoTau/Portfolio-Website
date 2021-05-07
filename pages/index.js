@@ -2,15 +2,15 @@ import React from 'react';
 import BaseLayout from '@/components/layouts/BaseLayout';
 import { Container, Row, Col } from 'reactstrap';
 import Typed from 'react-typed';
-import { useGetUser } from '@/actions/user';
+import { useUser } from '@auth0/nextjs-auth0';
 
 const roles = ["Developer", "Tech Enthusiast", "React JS", "C++", "C#", "C", "Java", "Powershell", "Unity"];
 
 const Index = () => {
-  const { data, loading } = useGetUser();
+  const { user, error, loading } = useUser();
   return (
     <BaseLayout 
-      user={data}
+      user={user}
       loading={loading}
       className="cover"
       >

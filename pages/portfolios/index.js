@@ -2,11 +2,11 @@ import BaseLayout from '@/components/layouts/BaseLayout';
 import BasePage from '@/components/BasePage';
 import Link from 'next/link';
 import { useGetPosts } from '@/actions'
-import { useGetUser } from '@/actions/user';
+import { useUser } from '@auth0/nextjs-auth0';
 
 const Portfolios = () => {
     const { data, error, loading } = useGetPosts();
-    const { data: dataU, loading: loadingU } = useGetUser();
+    const { user, error:errorU, loading: loadingU } = useUser();
     const renderPosts = (posts) => {
         return posts.map(post =>
             <li key={post.id} style={{ 'fontSize': '20px' }}>
@@ -20,7 +20,7 @@ const Portfolios = () => {
     }
 
     return (
-        <BaseLayout user={dataU} loading={loadingU}>
+        <BaseLayout user={user} error={errorU} loading={loadingU}>
             <BasePage>
                 <h1>I am Portfolio Page</h1>
                 {loading &&

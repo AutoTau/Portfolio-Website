@@ -1,12 +1,12 @@
 
 import BaseLayout from "@/components/layouts/BaseLayout"
 import BasePage from "@/components/BasePage";
-import { useGetUser } from '@/actions/user';
+import { useUser } from '@auth0/nextjs-auth0';
 
 const About = () => {
-    const { data, loading } = useGetUser();
+    const { user, error, loading } = useUser();
     return (
-        <BaseLayout user={data} loading={loading}>
+        <BaseLayout user={user} loading={loading}>
             <BasePage>
                 <div>I am the About page</div>
             </BasePage>
