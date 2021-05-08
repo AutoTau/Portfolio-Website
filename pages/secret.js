@@ -3,8 +3,9 @@ import BaseLayout from "@/components/layouts/BaseLayout"
 import BasePage from "@/components/BasePage";
 import { useUser } from '@auth0/nextjs-auth0';
 import Redirect from '@/components/shared/Redirect';
+import withAuth from '@/hoc/withAuth';
 
-const Secret = () => {
+const Secret = ({ title }) => {
     const { user, error, loading } = useUser();
 
     if (loading) {
@@ -17,11 +18,15 @@ const Secret = () => {
         return (
             <BaseLayout user={user} loading={loading}>
                 <BasePage>
-                    <h1>I am the Secret page</h1>
+                    <h1>I am the Secret Page - {title}</h1>
                 </BasePage>
             </BaseLayout>
         )
     }
 }
 
-export default Secret;
+// // High Order Component - HOC
+// const withAuth = (Component) => props => 
+//     <Component title="Hello World" {...props}></Component>
+
+export default withAuth(Secret);
