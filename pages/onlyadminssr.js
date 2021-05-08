@@ -3,7 +3,7 @@ import BaseLayout from "@/components/layouts/BaseLayout";
 import BasePage from "@/components/BasePage";
 import { authorizeUser, withAuth } from '@/utils/auth0';
 
-const secretSSR = ({ user, title }) => {
+const OnlyAdminSSR = ({ user, title }) => {
     return (
         <BaseLayout user={user} loading={false}>
             <BasePage>
@@ -14,12 +14,6 @@ const secretSSR = ({ user, title }) => {
     )
 }
 
-// export const getServerSideProps = async ({ req, res }) => {
-//     const user = await authorizeUser(req,res);
-//     return {
-//         props: { user }
-//     }
-// }
 
 const getTitle = () => {
     return new Promise((res) => {
@@ -32,7 +26,7 @@ const getTitle = () => {
 export const getServerSideProps = withAuth(async ({ req, res }, user) => {
     const title = await getTitle();
     return title;
-})();
+})('admin');
 
 
-export default secretSSR;
+export default OnlyAdminSSR;
