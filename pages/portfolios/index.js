@@ -3,27 +3,22 @@ import BasePage from '@/components/BasePage';
 import Link from 'next/link';
 import { useUser } from '@auth0/nextjs-auth0';
 import PortfolioApi from '@/lib/api/portfolios';
+import { Row, Col } from 'reactstrap';
+import PortfolioCard from '@/components/PortfolioCard';
 
-const Portfolios = ({portfolios}) => {
+const Portfolios = ({ portfolios }) => {
     const { user, error: errorU, loading: loadingU } = useUser();
-    const renderPortfolios = (portfolios) => {
-        return portfolios.map(portfolio =>
-            <li key={portfolio._id} style={{ 'fontSize': '20px' }}>
-                <Link as={`/portfolios/${portfolio._id}`} href="/portfolios/[id]">
-                    <a>
-                        {portfolio.title}
-                    </a>
-                </Link>
-            </li>
-        )
-    }
 
     return (
         <BaseLayout user={user} error={errorU} loading={loadingU}>
-            <BasePage>
-                <ul>
-                    {renderPortfolios(portfolios)}
-                </ul>
+            <BasePage className="portfolio-page" >
+                <Row>
+                    {portfolios.map(portfolio =>
+                        <Col key={portfolio._id} md="4">
+                            <PortfolioCard portfolio={portfolio} />
+                        </Col>
+                    )}
+                </Row>
             </BasePage>
         </BaseLayout>
     )
@@ -32,8 +27,8 @@ const Portfolios = ({portfolios}) => {
 // This function is called during build time
 // Improves performance of page
 // creates static page with dynamic data
-export async function getStaticProps () {
-    
+export async function getStaticProps() {
+
     const json = await new PortfolioApi().getAll();
     const portfolios = json.data;
     return {
