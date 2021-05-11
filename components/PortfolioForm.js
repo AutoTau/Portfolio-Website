@@ -1,11 +1,15 @@
+import React from "react";
+import { useForm } from "react-hook-form";
 
-const PortfolioForm = () => {
+const PortfolioForm = ({onSubmit}) => {
+    
+    const { register, handleSubmit } = useForm();
     return (
-        <form>
+        <form onSubmit={handleSubmit(onSubmit)}>
             <div className="form-group">
                 <label htmlFor="title">Title</label>
                 <input
-                    name="title"
+                    {...register("title")}
                     type="text"
                     className="form-control"
                     id="title" />
@@ -14,7 +18,7 @@ const PortfolioForm = () => {
             <div className="form-group">
                 <label htmlFor="city">Company</label>
                 <input
-                    name="company"
+                    {...register("company")}
                     type="text"
                     className="form-control"
                     id="company" />
@@ -23,7 +27,7 @@ const PortfolioForm = () => {
             <div className="form-group">
                 <label htmlFor="city">Company Website</label>
                 <input
-                    name="companyWebsite"
+                    {...register("companyWebsite")}
                     type="text"
                     className="form-control"
                     id="companyWebsite" />
@@ -32,7 +36,7 @@ const PortfolioForm = () => {
             <div className="form-group">
                 <label htmlFor="street">Location</label>
                 <input
-                    name="location"
+                    {...register("location")}
                     type="text"
                     className="form-control"
                     id="location" />
@@ -41,7 +45,7 @@ const PortfolioForm = () => {
             <div className="form-group">
                 <label htmlFor="street">Job Title</label>
                 <input
-                    name="jobTitle"
+                    {...register("jobTitle")}
                     type="text"
                     className="form-control"
                     id="jobTitle" />
@@ -50,7 +54,7 @@ const PortfolioForm = () => {
             <div className="form-group">
                 <label htmlFor="description">Description</label>
                 <textarea
-                    name="description"
+                    {...register("description")}
                     rows="5"
                     type="text"
                     className="form-control"
@@ -59,22 +63,22 @@ const PortfolioForm = () => {
             </div>
 
             <div className="form-group">
-                <label htmlFor="street">Start Date</label>
+                <label htmlFor="startDate">Start Date</label>
                 <div>
                     {/* Date picker here */}
                 </div>
             </div>
 
             <div className="form-group">
-                <label htmlFor="street">End Date</label>
+                <label htmlFor="endDate">End Date</label>
                 <div>
                     {/* Date picker here */}
                 </div>
             </div>
-            <button
+            <input
                 type="submit"
-                className="btn btn-primary">Create
-        </button>
+                className="btn btn-primary">
+            </input>
         </form>
     )
 }

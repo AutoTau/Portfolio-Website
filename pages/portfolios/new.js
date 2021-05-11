@@ -8,12 +8,17 @@ import PortfolioForm from '@/components/PortfolioForm';
 
 const CreatePortfolio = () => {
     const { user, error, loading } = useUser();
+
+    const createPortfolio = (data) => {
+        alert(JSON.stringify(data));
+    }
+
     return (
         <BaseLayout user={user} loading={loading}>
             <BasePage header="Create Portfolio">
                 <Row>
                     <Col md="8">
-                        <PortfolioForm />
+                        <PortfolioForm onSubmit={createPortfolio}/>
                     </Col>
                 </Row>
             </BasePage>
