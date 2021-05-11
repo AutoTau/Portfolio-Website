@@ -1,8 +1,11 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import DatePicker from "react-datepicker";
 
-const PortfolioForm = ({onSubmit}) => {
-    
+
+
+const PortfolioForm = ({ onSubmit }) => {
+
     const { register, handleSubmit } = useForm();
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -65,14 +68,22 @@ const PortfolioForm = ({onSubmit}) => {
             <div className="form-group">
                 <label htmlFor="startDate">Start Date</label>
                 <div>
-                    {/* Date picker here */}
+                    <DatePicker
+                        showYearDropdown
+                        selected={new Date()}
+                        onChange={() => { }}
+                    />
                 </div>
             </div>
 
             <div className="form-group">
                 <label htmlFor="endDate">End Date</label>
                 <div>
-                    {/* Date picker here */}
+                    <DatePicker
+                        showYearDropdown
+                        selected={new Date()}
+                        onChange={() => { }}
+                    />
                 </div>
             </div>
             <input
