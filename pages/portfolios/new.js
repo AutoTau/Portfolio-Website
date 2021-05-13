@@ -4,12 +4,13 @@ import withAuth from '@/hoc/withAuth';
 import { useUser } from '@auth0/nextjs-auth0';
 import { Row, Col } from 'reactstrap';
 import PortfolioForm from '@/components/PortfolioForm';
+import { createPortfolio } from '@/actions/portfolios';
 
-const CreatePortfolio = () => {
+const PortfolioNew = () => {
     const { user, error, loading } = useUser();
 
-    const createPortfolio = (data) => {
-        alert(JSON.stringify(data));
+    const _createPortfolio = (data) => {
+        createPortfolio(data);
     }
 
     return (
@@ -17,7 +18,7 @@ const CreatePortfolio = () => {
             <BasePage header="Create Portfolio">
                 <Row>
                     <Col md="8">
-                        <PortfolioForm onSubmit={createPortfolio}/>
+                        <PortfolioForm onSubmit={_createPortfolio} />
                     </Col>
                 </Row>
             </BasePage>
@@ -25,4 +26,4 @@ const CreatePortfolio = () => {
     )
 }
 
-export default withAuth(CreatePortfolio)('admin');
+export default withAuth(PortfolioNew)('admin');
