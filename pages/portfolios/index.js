@@ -14,7 +14,7 @@ import { useState } from 'react';
 const Portfolios = ({ portfolios: initialPortfolios }) => {
     const router = useRouter();
     const [portfolios, setPortfolios] = useState(initialPortfolios);
-    const [deletePortfolio, {data, error}] = useDeletePortfolio();
+    const [deletePortfolio, { data, error }] = useDeletePortfolio();
     const { user, error: errorU, loading: loadingU } = useUser();
 
     const _deletePortfolio = async (e, portfolioId) => {
@@ -25,8 +25,6 @@ const Portfolios = ({ portfolios: initialPortfolios }) => {
             // Don't include the portfolio i'm clicking on to delete in the newPortfolios (refreshed page)
             setPortfolios(portfolios.filter(p => p._id !== portfolioId));
         }
-
-  
     }
 
     return (
@@ -44,18 +42,18 @@ const Portfolios = ({ portfolios: initialPortfolios }) => {
                             md="4">
                             <PortfolioCard
                                 portfolio={portfolio}>
-                                { user && isAuthorized(user, 'admin') &&
+                                {user && isAuthorized(user, 'admin') &&
                                     <>
-                                        <Button 
-                                        onClick={(e) => {
-                                            e.stopPropagation();
-                                            router.push('/portfolios/[id]/edit', `/portfolios/${portfolio._id}/edit`)
-                                        }}
-                                        className="mr-2" 
-                                        color="warning">Edit</Button>
-                                        <Button 
-                                        onClick={(e) => _deletePortfolio(e, portfolio._id)}
-                                        color="danger">Delete</Button>
+                                        <Button
+                                            onClick={(e) => {
+                                                e.stopPropagation();
+                                                router.push('/portfolios/[id]/edit', `/portfolios/${portfolio._id}/edit`)
+                                            }}
+                                            className="mr-2"
+                                            color="warning">Edit</Button>
+                                        <Button
+                                            onClick={(e) => _deletePortfolio(e, portfolio._id)}
+                                            color="danger">Delete</Button>
                                     </>
                                 }
                             </PortfolioCard>
@@ -68,14 +66,13 @@ const Portfolios = ({ portfolios: initialPortfolios }) => {
     )
 }
 
-// This function is called during build time
-// Improves performance of page
-// creates static page with dynamic data
+// Incrementally statically regenerated
 export async function getStaticProps() {
     const json = await new PortfolioApi().getAll();
     const portfolios = json.data;
     return {
-        props: { portfolios }
+        props: { portfolios },
+        revalidate: 1
     }
 }
 
