@@ -7,11 +7,13 @@ import { useRouter } from 'next/router';
 import { isAuthorized } from '@/utils/auth0';
 import { Row, Col, Button } from 'reactstrap';
 import { useDeletePortfolio } from '@/actions/portfolios';
+import { useState } from 'react';
 
 
 
-const Portfolios = ({ portfolios }) => {
+const Portfolios = ({ portfolios: initialPortfolios }) => {
     const router = useRouter();
+    const [portfolios, setPortfolios] = useState(initialPortfolios);
     const [deletePortfolio, {data, error}] = useDeletePortfolio();
     const { user, error: errorU, loading: loadingU } = useUser();
 
@@ -20,7 +22,11 @@ const Portfolios = ({ portfolios }) => {
         const isConfirmed = confirm('Are you sure you want to delete this portfolio?');
         if (isConfirmed) {
             await deletePortfolio(portfolioId);
+            // Don't include the portfolio i'm clicking on to delete in the newPortfolios (refreshed page)
+            setPortfolios(portfolios.filter(p => p._id !== portfolioId));
         }
+
+  
     }
 
     return (
