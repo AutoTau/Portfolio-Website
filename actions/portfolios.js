@@ -1,7 +1,6 @@
 import axios from "axios";
 import useSWR from 'swr';
-import { useApiHandler } from '@/actions';
-import { fetcher } from '@/actions';
+import { useApiHandler, fetcher } from 'actions';
 
 const createPortfolio = (data) => axios.post('/api/v1/portfolios', data, {timeout: 10000});
 const updatePortfolio = (id, data) => axios.patch(`/api/v1/portfolios/${id}`, data, {timeout: 10000});
