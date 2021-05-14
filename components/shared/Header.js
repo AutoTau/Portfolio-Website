@@ -33,29 +33,28 @@ const LoginLink = () =>
 const LogoutLink = () =>
   <a className="nav-link port-navbar-link" href="/api/auth/logout">Log out</a>
 
-
 const AdminMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <Dropdown
       className="port-navbar-link port-dropdown-menu"
       nav
-      isOpen={true}
+      isOpen={isOpen}
       toggle={() => setIsOpen(!isOpen)}>
       <DropdownToggle className="port-dropdown-toggle" nav carret>
         Admin
-      </DropdownToggle>
+          </DropdownToggle>
       <DropdownMenu>
         <DropdownItem>
           <BsNavLink
             className="port-dropdown-item"
             href="/portfolios/new"
-            title="Create Portfolio" />
+            title="Create Portfolio"
+          />
         </DropdownItem>
       </DropdownMenu>
     </Dropdown>
   )
-
 }
 
 const Header = ({ user, loading, className }) => {
