@@ -12,4 +12,14 @@ export default async function handleBlog(req, res) {
         }
     }
 
+    if (req.method === 'PATCH') {
+        try {
+            const { accessToken } = await getAccessToken(req, res);
+            const json = await new BlogApi(accessToken).update(req.query.id, req.body);
+            return res.json(json.data);
+        } catch (e) {
+            return res.status(e.status || 422).json(e.response.data);
+        }
+    }
+
 }
