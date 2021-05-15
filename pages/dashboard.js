@@ -1,16 +1,17 @@
 
 import BaseLayout from "@/components/layouts/BaseLayout"
 import BasePage from "@/components/BasePage";
-import withAuth from '@/hoc/withAuth';
-import Link from 'next/link'
-import { Container, Row, Col, Button } from 'reactstrap';
 import Masthead from 'components/shared/Masthead';
+import BlogApi from 'lib/api/blogs';
+import { Row, Col } from 'reactstrap';
+import { withAuth } from 'utils/auth0';
+import { getSession } from '@auth0/nextjs-auth0';
 
-
-const Dashboard = ({ user, loading }) => {
+const Dashboard = ({ user, blogs }) => {
+    debugger
     return (
-        <BaseLayout navClass="transparent" user={user} loading={loading}>
-            <Masthead imagePath="/images/home-bg.jpg"/>
+        <BaseLayout navClass="transparent" user={user} loading={false}>
+            <Masthead imagePath="/images/home-bg.jpg" />
             <BasePage className="blog-user-page">
                 <Row>
                     <Col md="6" className="mx-auto text-center">
@@ -24,4 +25,10 @@ const Dashboard = ({ user, loading }) => {
         </BaseLayout>
     )
 }
-export default withAuth(Dashboard)('admin');
+
+export const getServerSideProps = withAuth(async ({ req, res }) => {
+    const { accessToken } = await getSession(req, res);
+    const json = await new BlogApi(accessToken).getByUser();
+    return { blogs: json.data }
+})('admin');
+export default Dashboard;
