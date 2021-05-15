@@ -4,7 +4,7 @@ import BasePage from "@/components/BasePage";
 import { useUser } from '@auth0/nextjs-auth0';
 
 const Blogs = () => {
-    const { user, error, loading } = useUser();
+    const { user, loading } = useUser();
     return (
         <BaseLayout user={user} loading={loading}>
             <BasePage>

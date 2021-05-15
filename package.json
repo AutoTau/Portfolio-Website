@@ -14,6 +14,7 @@
     "bootstrap": "^4.4.1",
     "cross-env": "^7.0.3",
     "next": "^10.2.0",
+    "node-gyp": "^8.0.0",
     "react": "17.0.2",
     "react-datepicker": "^3.8.0",
     "react-dom": "17.0.2",
@@ -22,6 +23,7 @@
     "react-typed": "^1.2.0",
     "reactstrap": "^8.9.0",
     "sass": "^1.32.12",
+    "slate-simple-editor": "github:Jerga99/slate-simple-editor",
     "swr": "^0.5.6"
   }
 }
