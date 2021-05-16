@@ -2,11 +2,10 @@
 import BaseLayout from "@/components/layouts/BaseLayout";
 import BasePage from "@/components/BasePage";
 import Masthead from 'components/shared/Masthead';
-import Link from 'next/link';
 import BlogItem from 'components/BlogItem';
 import BlogApi from "lib/api/blogs";
 import { useUser } from '@auth0/nextjs-auth0';
-import { Row, Col, Container } from 'reactstrap';
+import { Row, Col } from 'reactstrap';
 
 
 const Blogs = ({ blogs }) => {
