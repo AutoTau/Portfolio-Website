@@ -8,8 +8,16 @@ import PortDropdown from 'components/shared/Dropdown';
 import { Row, Col } from 'reactstrap';
 import { withAuth } from 'utils/auth0';
 import { getSession } from '@auth0/nextjs-auth0';
+import { useUpdateBlog } from 'actions/blogs';
 
 const Dashboard = ({ user, blogs }) => {
+
+    const [updateBlog] = useUpdateBlog();
+
+    const changeBlogStatus = async (blogId, status) => {
+        await updateBlog(blogId, {status});
+    }
+
 
     // Creates a dropdown option based on the blog status
     const createOption = (blogStatus) => {
@@ -21,7 +29,7 @@ const Dashboard = ({ user, blogs }) => {
     const createOptions = (blog) => {
         const option = createOption(blog.status)
         return [
-            { key: `${blog._id}-published`, text: option.view, handlers: { onClick: () => { alert(`Changing status to - ${option.value}`) } } },
+            { key: `${blog._id}-published`, text: option.view, handlers: { onClick: () => changeBlogStatus(blog._id, option.value) } },
             { key: `${blog._id}-delete`, text: 'Delete', handlers: { onClick: () => { alert(`Clicking Delete! ${blog._id}`) } } }
         ]
     }
