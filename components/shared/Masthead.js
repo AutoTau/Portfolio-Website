@@ -1,6 +1,4 @@
-
 import { Container, Row, Button } from 'reactstrap';
-import Link from 'next/link'
 
 const Masthead = ({ children, imagePath }) =>
     <div className="masthead" style={{ "backgroundImage": `url(${imagePath})` }}>
