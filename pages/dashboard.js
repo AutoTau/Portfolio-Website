@@ -33,7 +33,7 @@ const Dashboard = ({ user, loading }) => {
         const option = createOption(blog.status)
         return [
             { key: `${blog._id}-published`, text: option.view, handlers: { onClick: () => changeBlogStatus(blog._id, option.value) } },
-            { key: `${blog._id}-delete`, text: 'Delete', handlers: { onClick: () => { alert(`Clicking Delete! ${blog._id}`) } } }
+            { key: `${blog._id}-delete`, text: 'Delete', handlers: { onClick: () => changeBlogStatus(blog._id, 'deleted') } }
         ]
     }
 
