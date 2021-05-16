@@ -11,14 +11,21 @@ import { getSession } from '@auth0/nextjs-auth0';
 
 const Dashboard = ({ user, blogs }) => {
 
+    // Creates a dropdown option based on the blog status
+    const createOption = (blogStatus) => {
+        return blogStatus === 'draft' ? { view: 'Publish Blog', value: 'published' }
+            : { view: 'Make a Draft', value: 'draft' }
+    }
+
     // Creates dropdown options
     const createOptions = (blog) => {
+        const option = createOption(blog.status)
         return [
-            { key: `${blog._id}-published`, text: 'Published', handlers: { onClick: () => { alert(`Clicking Publish! ${blog._id}`) } } },
+            { key: `${blog._id}-published`, text: option.view, handlers: { onClick: () => { alert(`Changing status to - ${option.value}`) } } },
             { key: `${blog._id}-delete`, text: 'Delete', handlers: { onClick: () => { alert(`Clicking Delete! ${blog._id}`) } } }
         ]
     }
-    
+
     // Renders the blogs with the given status
     const renderBlogs = (blogs, status) => (
         <ul className="user-blogs-list">
