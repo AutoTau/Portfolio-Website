@@ -2,22 +2,25 @@
 import BaseLayout from "@/components/layouts/BaseLayout"
 import BasePage from "@/components/BasePage";
 import Masthead from 'components/shared/Masthead';
-import BlogApi from 'lib/api/blogs';
 import Link from 'next/link';
 import PortDropdown from 'components/shared/Dropdown';
 import { Row, Col } from 'reactstrap';
-import { withAuth } from 'utils/auth0';
-import { getSession } from '@auth0/nextjs-auth0';
-import { useUpdateBlog } from 'actions/blogs';
+import withAuth from 'hoc/withAuth';
+import { useGetUserBlogs, useUpdateBlog } from 'actions/blogs';
+import { toast } from "react-toastify";
 
-const Dashboard = ({ user, blogs }) => {
+const Dashboard = ({ user, loading }) => {
 
     const [updateBlog] = useUpdateBlog();
+    const { data: blogs, mutate } = useGetUserBlogs();
 
     const changeBlogStatus = async (blogId, status) => {
-        await updateBlog(blogId, {status});
-    }
+        updateBlog(blogId, { status })
+            .then(() => mutate())
+            .catch(() => toast.error('Something went wrong...'));
 
+        mutate();
+    }
 
     // Creates a dropdown option based on the blog status
     const createOption = (blogStatus) => {
@@ -37,7 +40,7 @@ const Dashboard = ({ user, blogs }) => {
     // Renders the blogs with the given status
     const renderBlogs = (blogs, status) => (
         <ul className="user-blogs-list">
-            { blogs.filter(blog => blog.status === status).map(blog =>
+            { blogs && blogs.filter(blog => blog.status === status).map(blog =>
                 <li key={blog._id}>
                     <Link href="/blogs/editor/[id]" as={`/blogs/editor/${blog._id}`}>
                         <a>{blog.title}</a>
@@ -50,7 +53,7 @@ const Dashboard = ({ user, blogs }) => {
     )
 
     return (
-        <BaseLayout navClass="transparent" user={user} loading={false}>
+        <BaseLayout navClass="transparent" user={user} loading={loading}>
             <Masthead imagePath="/images/home-bg.jpg" />
             <BasePage className="blog-user-page">
                 <Row>
@@ -68,9 +71,4 @@ const Dashboard = ({ user, blogs }) => {
     )
 }
 
-export const getServerSideProps = withAuth(async ({ req, res }) => {
-    const { accessToken } = await getSession(req, res);
-    const json = await new BlogApi(accessToken).getByUser();
-    return { blogs: json.data }
-})('admin');
-export default Dashboard;
+export default withAuth(Dashboard)('admin');
