@@ -14,8 +14,8 @@ const Index = () => {
   const flipInterval = useRef();
 
   useEffect(() => {
-      animateCard();
-      return () => flipInterval.current && clearInterval(flipInterval.current);
+    animateCard();
+    return () => flipInterval.current && clearInterval(flipInterval.current);
   }, [])
 
   const animateCard = () => {
@@ -25,7 +25,7 @@ const Index = () => {
   }
 
   return (
-    <BaseLayout 
+    <BaseLayout
       user={user}
       loading={loading}
       navClass="transparent"
@@ -41,7 +41,7 @@ const Index = () => {
                 <div className={`flipper ${isFlipping ? 'isFlipping' : ''}`}>
                   <div className="front">
                     <div className="hero-section-content">
-                      <h2> Automation Software Engineer </h2>
+                      <h2> Software Engineer </h2>
                       <div className="hero-section-content-intro">
                         Have a look at my portfolio and job history.
                         </div>
@@ -52,14 +52,12 @@ const Index = () => {
                     </div>
                   </div>
                   <div className="back">
-                    <div className="hero-section-content">
-                      <h2> Automation Software Engineer </h2>
-                      <div className="hero-section-content-intro">
-                        Have a look at my portfolio and job history.
-                        </div>
+                    <div className="hero-section-content">                   
+                    <div className="hero-section-content-intro">
                     </div>
-                    <img className="image" src="/images/section-2.png" />
-                    <div className="shadow-custom-orange">
+                    </div>
+                    <img className="image" src="/images/charliandben4.jpg" />
+                    <div className="shadow-custom">
                       <div className="shadow-inner"> </div>
                     </div>
                   </div>
