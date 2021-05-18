@@ -6,14 +6,14 @@ import { useUser } from '@auth0/nextjs-auth0';
 import { Row, Col } from 'reactstrap';
 import { SlateView } from 'slate-simple-editor';
 
-const BlogDetail = ({ blog }) => {
-    const { user, error, loading } = useUser();
+const BlogDetail = ({ blog, author }) => {
+    const { user, loading } = useUser();
     return (
         <BaseLayout user={user} loading={loading}>
             <BasePage className="slate-container">
                 <Row>
-                    <Col md={{size: 8, offset: 2}}>
-                        <SlateView initialContent={blog.content}/>
+                    <Col md={{ size: 8, offset: 2 }}>
+                        <SlateView initialContent={blog.content} />
                     </Col>
                 </Row>
             </BasePage>
@@ -29,8 +29,8 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-    const json = await new BlogApi().getBySlug(params.slug);
-    return { props: { blog: json.data } }
+    const { data: { blog, user: author } } = await new BlogApi().getBySlug(params.slug);
+    return { props: { blog, author } }
 }
 
 
