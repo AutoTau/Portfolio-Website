@@ -38,10 +38,10 @@ const About = () => {
                             <p>My name is Ben Portis and I am an experienced software engineer. </p>
                             <p>
                                 Throughout my career I have strived to build scalable applications with a minimalistic aesthetic.
-                                User experience is always a top priority, and provides a solid foundation to all of my software."
-                                school/work/project history
+                                User experience is always a top priority, and provides a solid foundation to all of my software.
                             </p>
                             <p>
+                                school/work/project history
                                 goals/vision/plans for the future etc
                             </p>
                         </div>
