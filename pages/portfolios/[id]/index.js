@@ -9,9 +9,10 @@ const Portfolio = ({ portfolio }) => {
     // TODO: provide stylings improvement
     return (
         <BaseLayout user={user} loading={loadingU}>
-            <BasePage 
-            header="Portfolio Detail" 
-            title={`${portfolio.title} - Ben Portis`}>
+            <BasePage
+                header="Portfolio Detail"
+                title={`${portfolio.title} - Ben Portis`}
+                metaDescription={portfolio.description}>
                 {
                     JSON.stringify(portfolio)
                 }
@@ -29,7 +30,7 @@ export async function getStaticPaths() {
     // Based on portfolio ID
     const paths = portfolios.map(portfolio => {
         return {
-            params: {id: portfolio._id}
+            params: { id: portfolio._id }
         }
     })
 
@@ -38,10 +39,10 @@ export async function getStaticPaths() {
 }
 
 // Create individual Portfolio Pages at Build Time
-export async function getStaticProps({params}) {
+export async function getStaticProps({ params }) {
     const json = await new PortfolioApi().getById(params.id);
     const portfolio = json.data;
-    return { props: {portfolio}};
+    return { props: { portfolio } };
 }
 
 export default Portfolio

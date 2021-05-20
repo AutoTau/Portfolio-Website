@@ -13,6 +13,7 @@ const BlogDetail = ({ blog, author }) => {
         <BaseLayout user={user} loading={loading}>
             <BasePage 
             title={`${blog.title} - Ben Portis`}
+            metaDescription={blog.subTitle}
             className="slate-container">
                 <Row>
                     <Col md={{ size: 8, offset: 2 }}>

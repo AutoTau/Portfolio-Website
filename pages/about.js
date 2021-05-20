@@ -22,7 +22,6 @@ const About = () => {
         return 'fadein';
     }
 
-
     return (
         <BaseLayout user={user} loading={loading}>
             <BasePage title="About Me - Ben Portis" className="about-page">
@@ -38,6 +37,8 @@ const About = () => {
                         <div className={`${createFadeInClass()}`}>
                             <p>My name is Ben Portis and I am an experienced software engineer. </p>
                             <p>
+                                Throughout my career I have strived to build scalable applications with a minimalistic aesthetic.
+                                User experience is always a top priority, and provides a solid foundation to all of my software."
                                 school/work/project history
                             </p>
                             <p>
