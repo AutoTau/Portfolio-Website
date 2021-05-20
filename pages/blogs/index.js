@@ -19,6 +19,7 @@ const Blogs = ({ blogs }) => {
                 <span className="subheading">Programming, travelling...</span>
             </Masthead>
             <BasePage
+                title="Recent Blogs - Ben Portis"
                 className="blog-body">
                 <Row>
                     {

@@ -7,7 +7,7 @@ const Resume = () => {
       const { user, loading } = useUser();
     return (
         <BaseLayout user={user} loading={loading}>
-            <BasePage>
+            <BasePage title="My Resume - Ben Portis">
                 <Row>
                     <Col md={{size: 8, offset: 2}}>
                         <p align="center">

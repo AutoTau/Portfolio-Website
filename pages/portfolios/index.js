@@ -30,6 +30,7 @@ const Portfolios = ({ portfolios: initialPortfolios }) => {
     return (
         <BaseLayout user={user} error={errorU} loading={loadingU}>
             <BasePage
+                title="Portfolios - Ben Portis"
                 header="Portfolios"
                 className="portfolio-page">
                 <Row>
