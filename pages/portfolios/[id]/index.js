@@ -6,7 +6,7 @@ import { useUser } from '@auth0/nextjs-auth0';
 
 
 const Portfolio = ({ portfolio }) => {
-    const { user, error: errorU, loading: loadingU } = useUser();
+    const { user, loading: loadingU } = useUser();
 
     return (
         <BaseLayout 
@@ -16,17 +16,17 @@ const Portfolio = ({ portfolio }) => {
             <BasePage
                 noWrapper
                 indexPage
-                title={`${portfolio.title} - Ben Portis`}
-                metaDescription={portfolio.description}>
+                title={portfolio ? `${portfolio.title} - Ben Portis` : ''}
+                metaDescription={portfolio ? portfolio.description : ''}>
                 <div className="portfolio-detail">
                     <div className="cover-container d-flex h-100 p-3 mx-auto flex-column">
                         <main role="main" className="inner page-cover">
-                            <h1 className="cover-heading">{portfolio.title}</h1>
-                            <p className="lead dates">{formatDate(portfolio.startDate)} - {formatDate(portfolio.endDate) || 'Present'}</p>
-                            <p className="lead info mb-0">{portfolio.jobTitle} | {portfolio.company} | {portfolio.location}</p>
-                            <p className="lead">{portfolio.description}</p>
+                            <h1 className="cover-heading">{portfolio ? portfolio.title : ''}</h1>
+                            <p className="lead dates">{portfolio ? formatDate(portfolio.startDate) : ''} - {portfolio ? formatDate(portfolio.endDate) : '' || 'Present'}</p>
+                            <p className="lead info mb-0">{portfolio ? portfolio.jobTitle : ''} | {portfolio ? portfolio.company : ''} | {portfolio ? portfolio.location: ''}</p>
+                            <p className="lead">{portfolio ? portfolio.description : ''}</p>
                             <p className="lead">
-                                <a href={portfolio.companyWebsite} target="_" className="btn btn-lg btn-secondary">Visit Company</a>
+                                <a href={portfolio ? portfolio.companyWebsite : ''} target="_" className="btn btn-lg btn-secondary">Visit Company</a>
                             </p>
                         </main>
                     </div>
@@ -48,16 +48,15 @@ export async function getStaticPaths() {
             params: { id: portfolio._id }
         }
     })
-
-    // fallback: false infers that "not found" pages will be resolved into 404 pages
-    return { paths, fallback: false };
+    
+    return { paths, fallback: true };
 }
 
 // Create individual Portfolio Pages at Build Time
 export async function getStaticProps({ params }) {
     const json = await new PortfolioApi().getById(params.id);
     const portfolio = json.data;
-    return { props: { portfolio } };
+    return { props: { portfolio }, revalidate: 1 };
 }
 
 export default Portfolio

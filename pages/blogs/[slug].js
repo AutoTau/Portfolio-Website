@@ -12,17 +12,17 @@ const BlogDetail = ({ blog, author }) => {
     return (
         <BaseLayout user={user} loading={loading}>
             <BasePage 
-            title={`${blog.title} - Ben Portis`}
-            metaDescription={blog.subTitle}
+            title={blog ? `${blog.title} - Ben Portis` : ''}
+            metaDescription={blog ? blog.subTitle : ''}
             className="slate-container">
                 <Row>
                     <Col md={{ size: 8, offset: 2 }}>
                         <Avatar
-                            title={author.name}
-                            image={author.picture}
-                            date={blog.createdAt}
+                            title={author ? author.name : ''}
+                            image={author ? author.picture : ''}
+                            date={blog ? blog.createdAt : ''}
                         />
-                        <SlateView initialContent={blog.content} />
+                        <SlateView initialContent={blog? blog.content : ''} />
                     </Col>
                 </Row>
             </BasePage>
@@ -33,12 +33,12 @@ const BlogDetail = ({ blog, author }) => {
 export async function getStaticPaths() {
     const { data } = await new BlogApi().getAll();
     const paths = data.map(({ blog }) => ({ params: { slug: blog.slug } }));
-    return { paths, fallback: false };
+    return { paths, fallback: true };
 }
 
 export async function getStaticProps({ params }) {
     const { data: { blog, author } } = await new BlogApi().getBySlug(params.slug);
-    return { props: { blog, author } }
+    return { props: { blog, author }, revalidate: 1 }
 }
 
 export default BlogDetail;
