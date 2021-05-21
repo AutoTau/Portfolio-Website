@@ -31,7 +31,6 @@ const Index = () => {
       loading={loading}
       navClass="transparent"
       className={`cover ${isFlipping ? 'cover-orange' : 'cover-blue'}`}>
-      <meta name="viewport" content="width=device-width, initial-scale=1" />
       <BasePage indexPage title="Portfolio - Ben Portis">
         <div className="main-section">
           <div className="background-image">
@@ -56,7 +55,7 @@ const Index = () => {
                       </div>
                     </div>
                     <div className="back">
-                      <div className="image image-2">
+                      <div className="image image-2" >
                       </div>
                       <div className="shadow-custom-charli shadow-custom-purple">
                         <div className="shadow-inner"> </div>
