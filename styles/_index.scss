@@ -146,6 +146,11 @@
   }
 }
 
+@media (max-width: 450px) {
+  .hero-section {
+    display: none;
+  }
+}
 
 @media (max-width: 991px) {
   .hero-section {
