@@ -1,9 +1,10 @@
-import { Container } from "reactstrap";
 import Head from 'next/head';
+import React from "react";
 import { useRouter } from 'next/router';
+import { Container } from "reactstrap";
 
 
-const PageHeader = ({header}) =>
+const PageHeader = ({ header }) =>
     <div className="page-header">
         <h1 className="page-header-title">{header}</h1>
     </div>
@@ -21,7 +22,10 @@ const BasePage = (props) => {
         canonicalPath,
         metaDescription = "My name is Ben Portis and I am an experienced software engineer. Throughout my career I have strived to build scalable applications with a minimalistic aesthetic. User experience is always a top priority, and provides a solid foundation to all of my software."
     } = props;
-    const pageType = indexPage ? 'index-page' : 'base-page'
+
+    const pageType = indexPage ? 'index-page' : 'base-page';
+    const Wrapper = noWrapper ? React.Fragment : Container;
+
     return (
         <>
             <Head>
@@ -40,18 +44,10 @@ const BasePage = (props) => {
                 <link rel="canonical" href={`${process.env.BASE_URL}${canonicalPath ? canonicalPath : router.asPath}`} />
             </Head>
             <div className={`${pageType} ${className}`}>
-                {noWrapper &&
-                    <>
-                        {header && <PageHeader header={header} />}
-                        {children}
-                    </>
-                }
-                {!noWrapper &&
-                    <Container>
-                        {header && <PageHeader header={header} />}
-                        {children}
-                    </Container>
-                }
+                <Wrapper>
+                    {header && <PageHeader header={header} />}
+                    {children}
+                </Wrapper>
             </div>
         </>
     )
