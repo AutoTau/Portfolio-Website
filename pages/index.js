@@ -31,7 +31,7 @@ const Index = () => {
       loading={loading}
       navClass="transparent"
       className={`cover ${isFlipping ? 'cover-orange' : 'cover-blue'}`}>
-      <BasePage indexPage title="Portfolio - Benjamin Portis"> 
+      <BasePage indexPage title="Portfolio - Ben Portis">
         <div className="main-section">
           <div className="background-image">
             <img src="/images/background-index.png" />
@@ -42,24 +42,27 @@ const Index = () => {
                 <div className="hero-section">
                   <div className={`flipper ${isFlipping ? 'isFlipping' : ''}`}>
                     <div className="front">
-                      <div className="hero-section-content">
-                        <h2> Software Engineer </h2>
-                        <div className="hero-section-content-intro">
-                          Have a look at my portfolio and job history.
+                      <div className="image image-1">
+                        <div className="hero-section-content">
+                          <h2> Software Engineer </h2>
+                          <div className="hero-section-content-intro">
+                            Take a look at my portfolio and job history.
+                          </div>
                         </div>
                       </div>
-                      <img className="image" src="/images/section-1.png" />
                       <div className="shadow-custom">
                         <div className="shadow-inner"> </div>
                       </div>
                     </div>
                     <div className="back">
-                      <div className="hero-section-content">
-                        <div className="hero-section-content-intro">
+                      <div className="image image-2">
+                        <div className="hero-section-content-charli">
+                          <h2 className="h2-charli"></h2>
+                          <div className="hero-section-content-intro">
+                          </div>
                         </div>
                       </div>
-                      <img className="image" src="/images/charliandben4.jpg" />
-                      <div className="shadow-custom">
+                      <div className="shadow-custom-charli shadow-custom-purple">
                         <div className="shadow-inner"> </div>
                       </div>
                     </div>
@@ -70,13 +73,13 @@ const Index = () => {
                 <div className="hero-welcome-text">
                   <h1>
                     Welcome to the portfolio website of Ben Portis.
-                    Discover and collaborate on projects I've been working on throughout the years!
+                    Get informed, collaborate and discover projects I've worked on throughout the years!
                   </h1>
                 </div>
                 <Typed
                   loop
                   typeSpeed={70}
-                  backspeed={70}
+                  backSpeed={70}
                   strings={roles}
                   backDelay={1000}
                   loopCount={0}
