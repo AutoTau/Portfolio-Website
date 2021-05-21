@@ -55,9 +55,14 @@ const Index = () => {
                       </div>
                     </div>
                     <div className="back">
-                      <div className="image image-2" >
+                      <div className="image image-2">
+                        <div className="hero-section-content">
+                          <h2></h2>
+                          <div className="hero-section-content-intro">                
+                          </div>
+                        </div>
                       </div>
-                      <div className="shadow-custom-charli shadow-custom-purple">
+                      <div className="shadow-custom shadow-custom-orange">
                         <div className="shadow-inner"> </div>
                       </div>
                     </div>
