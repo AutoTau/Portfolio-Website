@@ -5,7 +5,7 @@ import { useUser } from '@auth0/nextjs-auth0';
 import { Container, Row, Col } from 'reactstrap';
 import { useState, useRef, useEffect } from 'react';
 
-const roles = ["Developer", "Tech Enthusiast", "React JS", "C++", "C#", "C", "Java", "Powershell", "Unity"];
+const roles = ["Developer", "Tech Enthusiast", "C++", "C#", "C", "Java", "JavaScript", "Dart", "Flutter", "React", "Powershell", "Unity"];
 
 const Index = () => {
   const { user, loading } = useUser();
