@@ -68,7 +68,7 @@ const Index = () => {
                 <div className="hero-welcome-text">
                   <h1>
                     Welcome to the portfolio website of Ben Portis.
-                    Get informed, collaborate and discover projects I've worked on throughout the years!
+                    Get informed, collaborate, and discover projects I've worked on throughout the years!
                   </h1>
                 </div>
                 <Typed
@@ -84,7 +84,7 @@ const Index = () => {
                 />
                 <div className="hero-welcome-bio">
                   <h1>
-                    Let's take a look at my work.
+                    Feel free to take a look at my work.
                   </h1>
                 </div>
               </Col>

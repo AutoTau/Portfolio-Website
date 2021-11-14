@@ -35,12 +35,9 @@ const About = () => {
                     </Col>
                     <Col md="6">
                         <div className={`${createFadeInClass()}`}>
-                            <p>My name is Ben Portis and I am an experienced software engineer. </p>
+                            <p>My name is Ben Portis and I am an experienced software engineer who is hungry to learn more. </p>
                             <p>
-                                Throughout my career I have striven to build scalable applications with a minimalistic aesthetic.
-                                User experience is always a top priority, and provides a solid foundation to all of my software.
-                                I have 3+ years of industry experience and a proven knowledge
-                                of product design, productivity improvement, and root cause analysis.
+                                Customer-focused Software Developer with extensive experience delivering complex automation software from requirements testing to monitoring and upkeep while maintaining extensive documentation. Collaborative problem solver awarded for cross-departmental teamwork in troubleshooting system issues and developing resolutions. Trusted mentor with success training and coaching interns through code review, design patterns, and Agile process. Detail oriented programmer driven by continuous improvement, scalability, performance, and reliability.
                             </p>
                             <p>
                                 I have a Bachelor of Science degree in Computer Science from Portland State University.
@@ -50,8 +47,7 @@ const About = () => {
                                 to aid in the automation of hardware validation and certification.
                             </p>
                             <p>
-                                Today I work as a Software Engineer for Intel's Logic Technology Development team, where I create observability solutions for complex factory automation systems.  I also provide
-                                on-call support to solve automation issues within Intel's primary factory research and development facility to ensure the factories production quality and output.
+                                Today I work as a Software Engineer for Intel's Logic Technology Development team. I develop observability solutions for complex factory automation systems and delivere expert customer service through on-call support to solve automation issues within Intel’s primary factory research and development facility. My work ensures the factory’s production quality and output.
 
                                 In the future, I plan to expand my knowledge of software engineering by tackling more complex problems, and continuing my constant learning of new technologies and programming languages.
                             </p>
