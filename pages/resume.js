@@ -11,7 +11,7 @@ const Resume = () => {
                 <Row>
                     <Col md={{size: 8, offset: 2}}>
                         <p align="center">
-                            <iframe title="Resume" src={"https://drive.google.com/file/d/1YPDLql2UoObwxJ_8GoEs0uhE4M0xHUF8/view?usp=sharing"} style={{width: '100%', height: '100%'}} />
+                            <iframe title="Resume" src={"https://drive.google.com/uc?id=1YPDLql2UoObwxJ_8GoEs0uhE4M0xHUF8"} style={{width: '100%', height: '100%'}} />
                         </p>
                     </Col>
                 </Row>
